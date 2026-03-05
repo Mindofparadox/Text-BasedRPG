@@ -4261,9 +4261,23 @@ function runEventAction(action, payload){
     return true;
   }
 
-  // optional: go to another event template
+  // optional: go to another event template (or chained event action)
   if (act.nextEvent){
-    startEventFromTemplate(act.nextEvent);
+    const nextId = act.nextEvent;
+    const nextTpl = CONTENT.encounters && CONTENT.encounters.templates ? CONTENT.encounters.templates[nextId] : null;
+    if (nextTpl){
+      startEventFromTemplate(nextId);
+      refreshAll();
+      return true;
+    }
+
+    const nextAct = CONTENT.eventActions && CONTENT.eventActions[nextId] ? CONTENT.eventActions[nextId] : null;
+    if (nextAct && nextId !== action){
+      return runEventAction(nextId, payload);
+    }
+
+    addLog("system", `Event transition missing: <b>${escapeHtml(nextId)}</b>. Returning to travel.`, { key:"EVENT" });
+    state.context = { mode:"travel" };
     refreshAll();
     return true;
   }
