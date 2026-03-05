@@ -1227,9 +1227,13 @@ const CONTENT = {
     defs: {
       // Consumables
       water: { name:"Water", type:"consumable", weight:0.6, stack:6, tags:["drink"], useText:"You drink carefully.", effects:{ thirst:+24, mood:+1 } },
+      purified_water: { name:"Purified Water", type:"consumable", weight:0.5, stack:6, tags:["drink"], useText:"Clean and cold. You feel steadier.", effects:{ thirst:+30, mood:+2 } },
+      rain_catcher_bottle: { name:"Rain Catcher Bottle", type:"consumable", weight:0.7, stack:4, tags:["drink"], useText:"Stale, but safe enough.", effects:{ thirst:+20, energy:+2 } },
       energy_bar: { name:"Energy Bar", type:"consumable", weight:0.2, stack:8, tags:["food"], useText:"Dry, but it helps.", effects:{ hunger:+18, energy:+6, mood:+1 } },
       canned_food: { name:"Canned Food", type:"consumable", weight:0.8, stack:4, tags:["food"], useText:"You force it down, cold.", effects:{ hunger:+30, mood:+1, energy:+2 } },
       jerky: { name:"Jerky", type:"consumable", weight:0.3, stack:6, tags:["food"], useText:"Tough, salty.", effects:{ hunger:+16, thirst:-2, mood:+1 } },
+      trail_mix: { name:"Trail Mix", type:"consumable", weight:0.2, stack:8, tags:["food"], useText:"Sweet and salty. Not bad.", effects:{ hunger:+14, energy:+8, mood:+1 } },
+      canned_soup: { name:"Canned Soup", type:"consumable", weight:0.9, stack:4, tags:["food"], useText:"Warm in your imagination, at least.", effects:{ hunger:+26, thirst:+8, mood:+2 } },
       painkillers: { name:"Painkillers", type:"medical", weight:0.1, stack:6, tags:["medical"], useText:"The ache dulls.", effects:{ mood:+3 }, specials:["reducePain"] },
       bandage: { name:"Bandage", type:"medical", weight:0.2, stack:6, tags:["medical"], useText:"You wrap it tight.", effects:{ }, specials:["stopBleeding"] },
       antiseptic: { name:"Antiseptic", type:"medical", weight:0.3, stack:3, tags:["medical"], useText:"It stings like fire.", effects:{ }, specials:["reduceInfection"] },
@@ -1655,13 +1659,17 @@ const CONTENT = {
     fuelcourt: [
       { w:35, v:{ id:"scrap", q:[1,2]} },
       { w:35, v:{ id:"water", q:[1,2]} },
+      { w:24, v:{ id:"rain_catcher_bottle", q:[1,1]} },
       { w:20, v:{ id:"jerky", q:[1,1]} },
       { w:10, v:{ id:"boots", q:[1,1]} }
     ],
         gas_shop: [
       { w:32, v:{ id:"energy_bar", q:[1,2]} },
+      { w:28, v:{ id:"trail_mix", q:[1,2]} },
       { w:24, v:{ id:"canned_food", q:[1,1]} },
+      { w:18, v:{ id:"canned_soup", q:[1,1]} },
       { w:20, v:{ id:"water", q:[1,2]} },
+      { w:14, v:{ id:"purified_water", q:[1,1]} },
       { w:14, v:{ id:"cloth", q:[2,4]} },
       { w:10, v:{ id:"ammo_9mm", q:[4,10]} },
       { w:6, v:{ id:"backpack_small", q:[1,1]} },
@@ -1694,8 +1702,11 @@ const CONTENT = {
     ],
     house_kitchen: [
       { w:35, v:{ id:"canned_food", q:[1,1]} },
+      { w:28, v:{ id:"canned_soup", q:[1,1]} },
       { w:28, v:{ id:"water", q:[1,2]} },
+      { w:18, v:{ id:"purified_water", q:[1,1]} },
       { w:22, v:{ id:"jerky", q:[1,2]} },
+      { w:20, v:{ id:"trail_mix", q:[1,2]} },
       { w:15, v:{ id:"alcohol", q:[1,1]} }
     ],
         house_bed: [
